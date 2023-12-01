@@ -1,0 +1,27 @@
+char* maximumOddBinaryNumber(char* s){
+    int number_one = 0;
+    for( int i = 0 ; i < strlen(s) ; i++)
+        number_one += (s[i] == '1') ? 1 : 0;
+    s[strlen(s)-1] = '1';
+    number_one--;
+    int i = 0;
+    for( ; i < number_one ; i++)
+        s[i] = '1';
+    for( ; i < strlen(s)-1 ; i++)
+        s[i] = '0';    
+    return s;
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+char* maximumOddBinaryNumber(char* s){
+    int number_one = 0;
+    for( int i = 0 ; i < strlen(s) ; i++)
+        number_one += (s[i] == '1') ? 1 : 0;
+    memset(s, '1', sizeof(char)*(number_one - 1));
+	memset(s+(number_one - 1), '0', sizeof (char)*((strlen(s) - number_one)));
+    s[strlen(s)-1] = '1';  
+    return s;
+}
